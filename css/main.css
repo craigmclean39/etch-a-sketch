@@ -12,9 +12,29 @@ div{
     display:flex;
     flex-direction: row;
     justify-content: center;
+
+    grid-row-start: 2;
+
 }
+
+#canvas-v-grid {
+    height: 90vh;
+    display:grid;
+    grid-template-rows: 1fr max-content 3fr;
+}
+
 
 #canvas-container {
 
     display:grid;
+}
+
+#etch-title
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding: 1vw;
+
+    font-size: 6vw;
 }
