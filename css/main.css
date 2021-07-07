@@ -8,6 +8,12 @@ div{
    
 }
 
+#canvas-flex {
+    display:flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
 #canvas-container {
 
     display:grid;

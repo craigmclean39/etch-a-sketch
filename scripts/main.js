@@ -16,11 +16,11 @@ function createCanvas(columns, rows)
     //let vw = document.documentElement.clientWidth;
     //let vh = document.documentElement.clientHeight;
 
-    canvasContainer.style.width = `50vmin`;
-    canvasContainer.style.height = `50vmin`;
+    canvasContainer.style.width = `40vmax`;
+    canvasContainer.style.height = `40vmax`;
     canvasContainer.style.gridTemplateColumns = `repeat(${columns}, 1fr);`;
     canvasContainer.style.gridTemplateRows = `repeat(${rows}, 1fr);`;
-    //canvasContainer.style.padding = "3rem";
+    canvasContainer.style.margin = "1rem";
 
 
     for(i = 0; i < columns; i++)
@@ -30,8 +30,6 @@ function createCanvas(columns, rows)
             let div = document.createElement("div");
             div.className = "grid-element";
 
-            //div.style.padding = ` ${((baseValue * 0.5)/columns/2)}px`;
-            //div.style.padding = "1rem";
             //specify where in the grid the div will go
             div.style.gridRowStart = j + 1;
             div.style.gridColumnStart = i + 1;
@@ -39,6 +37,7 @@ function createCanvas(columns, rows)
             //add the eventHandler
             div.addEventListener("mouseenter", colorGridItem);
             div.addEventListener("touchstart", colorGridItem);
+            div.addEventListener("touchmove", colorGridItem);
 
             canvasContainer.appendChild(div);
 
