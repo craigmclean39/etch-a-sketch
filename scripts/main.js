@@ -16,9 +16,11 @@ function createCanvas(columns, rows)
     //let vw = document.documentElement.clientWidth;
     //let vh = document.documentElement.clientHeight;
 
-    //canvasContainer.style.gridTemplateColumns = `repeat(${columns}, 10px);`;
-    //canvasContainer.style.gridTemplateRows = `repeat(${rows}, 10px);`;
-    canvasContainer.style.padding = "3rem";
+    canvasContainer.style.width = `50vmin`;
+    canvasContainer.style.height = `50vmin`;
+    canvasContainer.style.gridTemplateColumns = `repeat(${columns}, 1fr);`;
+    canvasContainer.style.gridTemplateRows = `repeat(${rows}, 1fr);`;
+    //canvasContainer.style.padding = "3rem";
 
 
     for(i = 0; i < columns; i++)
@@ -29,7 +31,7 @@ function createCanvas(columns, rows)
             div.className = "grid-element";
 
             //div.style.padding = ` ${((baseValue * 0.5)/columns/2)}px`;
-            div.style.padding = "1rem";
+            //div.style.padding = "1rem";
             //specify where in the grid the div will go
             div.style.gridRowStart = j + 1;
             div.style.gridColumnStart = i + 1;
@@ -44,5 +46,5 @@ function createCanvas(columns, rows)
     }
 }
 
-createCanvas(16, 16);
+createCanvas(32, 32);
 
