@@ -3,6 +3,10 @@ div{
     border: solid 1px black;
 }
 
+body{
+    overscroll-behavior: contain;
+}
+
 .grid-element {
 
    
