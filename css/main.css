@@ -1,10 +1,15 @@
 div{
 
-    border: solid 1px black;
+}
+
+h1{
+    font-family: 'Pacifico', cursive;
+    color: #FCBF49;
 }
 
 body{
-    overflow-y: hidden;
+
+    background-color: #003049;
 }
 
 .grid-element {
@@ -21,16 +26,51 @@ body{
 
 }
 
-#canvas-v-grid {
-    height: 90vh;
-    display:grid;
-    grid-template-rows: 1fr max-content 3fr;
+#canvas-inner-flex {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
 }
 
+#canvas-outer-flex {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.etch-border{
+    background-color: #D62828;
+}
+
+.etch-side {
+
+    width: 5vmax;
+}
+
+#etch-top {
+
+    display: block;
+    margin: auto;
+    height: 5vmax;
+    width: 50vmax;
+    border-top-right-radius: 2rem;
+    border-top-left-radius: 2rem;
+}
+
+#etch-bottom {
+    display: block;
+    margin: auto;
+    height: 5vmax;
+    width: 50vmax;
+
+    border-bottom-right-radius: 2rem;
+    border-bottom-left-radius: 2rem;
+}
 
 #canvas-container {
 
     display:grid;
+    background-color: #EAE2B7;
 }
 
 #etch-title

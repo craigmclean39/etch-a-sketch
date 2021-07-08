@@ -43,7 +43,7 @@ function createCanvas(columns, rows)
     canvasContainer.style.height = `40vmax`;
     canvasContainer.style.gridTemplateColumns = `repeat(${columns}, 1fr);`;
     canvasContainer.style.gridTemplateRows = `repeat(${rows}, 1fr);`;
-    canvasContainer.style.margin = "1rem";
+    //canvasContainer.style.margin = "1rem";
 
 
     for(i = 0; i < columns; i++)
