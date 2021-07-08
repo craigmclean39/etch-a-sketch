@@ -3,8 +3,33 @@ div{
 }
 
 h1{
+    font-size: 4rem;
     font-family: 'Pacifico', cursive;
     color: #FCBF49;
+}
+
+.signature{
+    font-size: 1rem;
+    color: #FCBF49;
+    font-family: 'Pacifico', cursive;
+    font-weight: 500;
+    padding: 0.5rem;
+
+}
+
+#signature-flex-h{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    margin-right: 3rem;
+    margin-top: 1rem;
+}
+
+#signature-flex-v{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
 }
 
 body{
@@ -15,6 +40,36 @@ body{
 .grid-element {
 
    
+}
+
+#flex-buttons{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0.5rem;
+}
+
+.etch-button{
+    border-radius: 0.5rem;
+
+    background-color: #F77F00;
+    border: none;
+    color: #003049;
+    padding: 0.25rem 0.5rem;
+    margin: .25rem;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-weight: 600;
+
+    box-shadow:  .15rem .15rem #FCBF49;
+}
+
+.etch-button:hover {
+
+    background-color: #FCBF49;
+    box-shadow:  .1rem .1rem #F77F00;
 }
 
 #canvas-flex {
@@ -44,15 +99,15 @@ body{
 
 .etch-side {
 
-    width: 5vmax;
+    width: 3vmax;
 }
 
 #etch-top {
 
     display: block;
     margin: auto;
-    height: 5vmax;
-    width: 50vmax;
+    height: 3vmax;
+    width: 36vmax;
     border-top-right-radius: 2rem;
     border-top-left-radius: 2rem;
 }
@@ -60,8 +115,9 @@ body{
 #etch-bottom {
     display: block;
     margin: auto;
-    height: 5vmax;
-    width: 50vmax;
+    height: auto;
+    min-height: 10rem;
+    width: 36vmax;
 
     border-bottom-right-radius: 2rem;
     border-bottom-left-radius: 2rem;

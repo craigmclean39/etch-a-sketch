@@ -4,21 +4,51 @@
 let canvasContainer = document.querySelector("#canvas-container");
 let drawColor = "black";
 
+let clearButton = document.querySelector("#clear");
+let rainbowButton = document.querySelector("#rainbow");
+let sizeUpButton = document.querySelector("#sizeup");
+let sizeDownButton = document.querySelector("#sizedown");
+
+clearButton.addEventListener("click", clearCanvas);
+rainbowButton.addEventListener("click", toggleRainbow);
+
+
+let rainbowMode = false;
+let colorIndex = 0;
+let colorArray = ["#f94144", "#f3722c", "#f8961e", "#f9844a", "#f9c74f", "#90be6d", "#43aa8b", "#4d908e", "#577590", "#277da1"];
+
+let sizeArray = [8, 16, 32, 48, 64, 96];
+let sizeIndex = 0;
+sizeUpButton.addEventListener("click", function() { adjustCanvas(true) });
+sizeDownButton.addEventListener("click", function() { adjustCanvas(false) });
+
+function toggleRainbow()
+{
+    rainbowMode = !rainbowMode;
+    if(rainbowMode)
+    {
+        rainbowButton.style.backgroundColor = "#FCBF49";
+        rainbowButton.style.boxShadow = ".1rem .1rem #F77F00";
+    }
+    else
+    {
+        rainbowButton.style.backgroundColor = "#F77F00";
+        rainbowButton.style.boxShadow = ".15rem .15rem #FCBF49";
+
+    }
+    
+}
 
 function colorGridItem(event) {
-    //console.log(event);
-
     if(event.target != undefined && event.target != null)
     {
-        event.target.style.backgroundColor = drawColor;
+        colorIt(event.target);  
     }
 }
 
 function colorGridItemTouchMove(event) {
 
-    //console.log(event);
     let touch = event.changedTouches[0];
-    //console.log(touch.clientX + " " + touch.clientY);
     if(touch.clientX != undefined && touch.clientY != undefined)
     {
         let touchElement = document.elementFromPoint(touch.clientX, touch.clientY);
@@ -26,8 +56,26 @@ function colorGridItemTouchMove(event) {
         {
             if(touchElement.className == "grid-element")
             {
-                touchElement.style.backgroundColor = drawColor;
+                colorIt(touchElement);
             }
+        }
+    }
+}
+
+function colorIt(element)
+{
+    if(!rainbowMode)
+    {
+        element.style.backgroundColor = drawColor;
+    }
+    else
+    {
+        element.style.backgroundColor = colorArray[colorIndex];
+        colorIndex++;
+
+        if(colorIndex >= colorArray.length)
+        {
+            colorIndex = 0;
         }
     }
 }
@@ -35,15 +83,10 @@ function colorGridItemTouchMove(event) {
 //Create a grid of divs with the specified number of columns and rows
 function createCanvas(columns, rows)
 {
-
-    //let vw = document.documentElement.clientWidth;
-    //let vh = document.documentElement.clientHeight;
-
-    canvasContainer.style.width = `40vmax`;
-    canvasContainer.style.height = `40vmax`;
+    canvasContainer.style.width = `30vmax`;
+    canvasContainer.style.height = `30vmax`;
     canvasContainer.style.gridTemplateColumns = `repeat(${columns}, 1fr);`;
     canvasContainer.style.gridTemplateRows = `repeat(${rows}, 1fr);`;
-    //canvasContainer.style.margin = "1rem";
 
 
     for(i = 0; i < columns; i++)
@@ -68,5 +111,56 @@ function createCanvas(columns, rows)
     }
 }
 
-createCanvas(32, 32);
+createCanvas(sizeArray[sizeIndex], sizeArray[sizeIndex]);
+
+function clearCanvas() {
+
+    let gridSquares = canvasContainer.getElementsByClassName("grid-element");
+    for(const g of gridSquares)
+    {
+        if(g.className == "grid-element")
+        {
+            g.style.backgroundColor = "transparent";
+        }
+    }
+}
+
+function removeChildren(parent)
+{
+    while(parent.firstChild)
+    {
+        parent.removeChild(parent.firstChild);
+    }
+}
+
+function adjustCanvas(up)
+{
+    let change = false;
+    if(up)
+    {
+        if(sizeIndex < (sizeArray.length-1))
+        {
+            change = true;
+            sizeIndex++;
+        }
+    }
+    else
+    {
+        if(sizeIndex > 0)
+        {
+            change = true;
+            sizeIndex--;
+        }
+    }
+
+    if(change)
+    {
+        clearCanvas();
+        removeChildren(canvasContainer);
+        createCanvas(sizeArray[sizeIndex], sizeArray[sizeIndex]);
+    }
+}
+
+
+
 
